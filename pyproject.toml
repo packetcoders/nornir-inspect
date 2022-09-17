@@ -79,7 +79,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bandit]
-exclude_dirs = [".venv",]
+exclude_dirs = [".venv", "tests"]
 
 [tool.black]
 exclude = "(.venv)"
@@ -91,8 +91,8 @@ balanced_wrapping = true
 atomic = true
 
 [tool.pydocstyle]
-match_dir = '^(?!(.venv)).*'
+match_dir = '^(?!(.venv|virtualenvs)).*'
 
 [tool.mypy]
-exclude = '.venv/'
+exclude = 'virtualenvs/'
 pretty = true

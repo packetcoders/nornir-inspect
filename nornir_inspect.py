@@ -16,7 +16,7 @@ def create_object_attribute_tree(
     headings: bool = True,
 ) -> Tree:
     """
-    > This function takes an `AggregatedResult` object and prints a tree of the object's attributes and
+    Take an `AggregatedResult` object and prints a tree of the object's attributes and
     values.
 
     Args:
@@ -24,7 +24,6 @@ def create_object_attribute_tree(
       vals (bool): bool = False. Defaults to False
       headings (bool): bool = False. Defaults to False
     """
-
     # AggregatedResult
     tree = Tree(Pretty(type(nr_result)))
 
@@ -51,12 +50,12 @@ def create_object_attribute_tree(
             if vals:
                 add_to_tree(branch_3, item)
 
-    return tree  # noqa: T001
+    return tree
 
 
 def add_to_tree(branch: Any, nr_result: Union[AggregatedResult, MultiResult, Result]):
     """
-    It takes a branch and a root object, and adds the root object's attributes to the branch.
+    Take a branch and a root object, and adds the root object's attributes to the branch.
 
     Args:
       branch (Any): Any
@@ -68,8 +67,8 @@ def add_to_tree(branch: Any, nr_result: Union[AggregatedResult, MultiResult, Res
 
 def get_object_attributes(obj: Any) -> dict:
     """
-    It returns a dictionary of all the attributes of an object, excluding private and special methods,
-    builtin functions, and methods
+    Return a dictionary of all the attributes of an object, excluding private and special methods
+    builtin functions, and methods.
 
     Args:
       obj (Any): Any
@@ -100,4 +99,13 @@ def get_object_attributes(obj: Any) -> dict:
 def inspect_nornir(
     nr_result: AggregatedResult, vals: bool = True, headings: bool = True
 ):
-    print(create_object_attribute_tree(nr_result, vals, headings))
+    """
+    Take a Nornir result object and prints out a tree of the attributes and methods of the object.
+
+    Args:
+      nr_result (AggregatedResult): The Nornir result object to inspect
+      vals (bool): If True, the values of the attributes will be printed. Defaults to True
+      headings (bool): If True, the first line of the output will be a list of the headings. Defaults to
+    True
+    """
+    print(create_object_attribute_tree(nr_result, vals, headings))  # noqa: T001

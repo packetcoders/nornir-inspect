@@ -2,4 +2,4 @@
 # E501: Line length, already enforced by Black.
 ignore = E501
 exclude =
-    venv,
+    .venv,
