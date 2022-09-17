@@ -21,8 +21,8 @@ def create_object_attribute_tree(
 
     Args:
       nr_result (AggregatedResult): AggregatedResult
-      vals (bool): bool = False. Defaults to False
-      headings (bool): bool = False. Defaults to False
+      vals (bool): bool = True. Defaults to False
+      headings (bool): bool = True. Defaults to False
     """
     # AggregatedResult
     tree = Tree(Pretty(type(nr_result)))
