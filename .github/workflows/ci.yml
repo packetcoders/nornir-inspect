@@ -24,7 +24,7 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install dependencies
-        run: poetry install -only dev
+        run: poetry install --only dev
       - name: Format (chk) - black
         run: poetry run black . --check
       - name: Format (chk) - isort
@@ -58,6 +58,6 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install dependencies
-        run: poetry install -only main
+        run: poetry install --only main
       - name: Test
         run: pytest -vvv --tb=short
