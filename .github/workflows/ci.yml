@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  code-quailty:
+  code-quality:
     name: "code-quality"
     strategy:
        matrix:
