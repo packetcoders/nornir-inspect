@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "nornir_inspect"
+name = "nornir-inspect"
 version = "0.1.0"
 description = "Nornir inspection tool"
 authors = ["Rick Donato <admin@packetcoders.io>"]
