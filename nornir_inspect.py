@@ -96,7 +96,7 @@ def get_object_attributes(obj: Any) -> dict:
     return obj_attr
 
 
-def inspect_nornir(
+def nornir_inspect(
     nr_result: AggregatedResult, vals: bool = True, headings: bool = True
 ):
     """

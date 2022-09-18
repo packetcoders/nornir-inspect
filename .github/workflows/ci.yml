@@ -1,8 +1,10 @@
 name: Pull Request
 
 on:
+  push:
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ "development" ]
+  workflow_dispatch:
 
 jobs:
   code-quailty:
@@ -10,7 +12,7 @@ jobs:
     strategy:
        matrix:
         python-version: [3.9]
-        poetry-version: [1.1.12]
+        poetry-version: [1.2.0]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,20 +24,41 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install dependencies
-        run: poetry install
-      - name: Run black
+        run: poetry install -only dev
+      - name: Format (chk) - black
         run: poetry run black . --check
-      - name: Run isort
+      - name: Format (chk) - isort
         run: poetry run isort . --check-only --profile black
-      - name: Run autoflake
+      - name: Format (chk) - autoflake
         run: poetry run autoflake -r . --expand-star-imports --remove-unused-variables --remove-all-unused-imports
-      - name: Run bandit
-        run: poetry run bandit -r .
-      - name: Run flake8
-        run: poetry run flake8 . --ignore=E501
-      - name: Run pydocstyle
+      - name: Format (chk) - bandit
+        run: poetry run bandit -r . -c pyproject.toml
+      - name: Lint - flake8
+        run: poetry run flake8 .
+      - name: Lint - pydocstyle
         run: poetry run pydocstyle .
-      - name: Run yamlint
+      - name: Lint - yamllint
         run: poetry run yamllint .
-      - name: Run mypy
+      - name: Type check - mypy
         run: poetry run mypy .
+  tests:
+    name: "python-tests"
+    if: always()
+    needs: python-code-quality
+    strategy:
+      matrix:
+        python-version: [3.9]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run image
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+      - name: Install dependencies
+        run: poetry install -only main
+      - name: Test
+        run: pytest -vvv --tb=short

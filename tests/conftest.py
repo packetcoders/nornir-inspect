@@ -1,7 +1,7 @@
 import pytest
 from nornir import InitNornir
 from nornir.core.task import Result
-
+import re
 
 @pytest.fixture(scope="session")
 def dummy_class():
@@ -51,3 +51,57 @@ def nr_result(nr_init):
         return Result(host=task.host, result=f"{n}")
 
     return nr_init.run(task=task_1, number=1)
+
+
+@pytest.fixture(scope="session")
+def expected_inspect_output():
+    return """<class 'nornir.core.task.AggregatedResult'>
+├── failed = False
+├── failed_hosts = {}
+├── name = task_1
+├── <class 'nornir.core.task.MultiResult'> ['node1']
+│   ├── failed = False
+│   ├── failed_hosts = {}
+│   ├── name = task_1
+│   └── <class 'nornir.core.task.Result'> [0]
+│       ├── changed = False
+│       ├── diff = ''
+│       ├── exception = None
+│       ├── failed = False
+│       ├── host = node1
+│       ├── name = task_1
+│       ├── result = 2
+│       ├── severity_level = 20
+│       ├── stderr = None
+│       └── stdout = None
+├── <class 'nornir.core.task.MultiResult'> ['node2']
+│   ├── failed = False
+│   ├── failed_hosts = {}
+│   ├── name = task_1
+│   └── <class 'nornir.core.task.Result'> [0]
+│       ├── changed = False
+│       ├── diff = ''
+│       ├── exception = None
+│       ├── failed = False
+│       ├── host = node2
+│       ├── name = task_1
+│       ├── result = 2
+│       ├── severity_level = 20
+│       ├── stderr = None
+│       └── stdout = None
+└── <class 'nornir.core.task.MultiResult'> ['node3']
+    ├── failed = False
+    ├── failed_hosts = {}
+    ├── name = task_1
+    └── <class 'nornir.core.task.Result'> [0]
+        ├── changed = False
+        ├── diff = ''
+        ├── exception = None
+        ├── failed = False
+        ├── host = node3
+        ├── name = task_1
+        ├── result = 2
+        ├── severity_level = 20
+        ├── stderr = None
+        └── stdout = None
+"""
