@@ -42,8 +42,7 @@ jobs:
       - name: Type check - mypy
         run: poetry run mypy .
   tests:
-    name: "python-tests"
-    if: always()
+    name: "tests"
     needs: python-code-quality
     strategy:
       matrix:
