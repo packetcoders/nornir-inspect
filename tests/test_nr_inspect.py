@@ -5,7 +5,7 @@ from nornir_inspect import (
     get_object_attributes,
     nornir_inspect,
 )
-import re
+
 
 def test_get_object_attributes(dummy_class):
     """Test creating a dict of object attributes."""
@@ -43,7 +43,6 @@ def test_create_object_attribute_tree_without_values_headings(nr_result):
 )
 def test_create_object_attribute_tree_level_1(index, children, label, nr_result):
     """Test the 1st level of the tree object."""
-
     tree = create_object_attribute_tree(nr_result)
 
     assert tree.children[index].label.plain == label
@@ -72,7 +71,6 @@ def test_create_object_attribute_tree_level_2(
     assert tree.children[index_1].__class__.__name__ == "Tree"
 
 
-
 def test_nornir_inspect_output(nr_result, expected_inspect_output, capsys):
     """Test the Nornir inspect output"""
     nornir_inspect(nr_result)
@@ -82,4 +80,3 @@ def test_nornir_inspect_output(nr_result, expected_inspect_output, capsys):
     assert len(str(captured_output).splitlines()) == 49
     # Replace performed to prevent of on line space being auto removed by VSCode.
     assert captured_output.replace("diff = ", "diff = ''") == expected_inspect_output
-

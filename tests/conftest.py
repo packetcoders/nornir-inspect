@@ -1,7 +1,7 @@
 import pytest
 from nornir import InitNornir
 from nornir.core.task import Result
-import re
+
 
 @pytest.fixture(scope="session")
 def dummy_class():
