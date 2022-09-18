@@ -15,13 +15,14 @@ jobs:
         poetry-version: [1.2.0]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
+      - uses: actions/checkout@v3
       - uses: abatilo/actions-poetry@v2
         with:
           poetry-version: ${{ matrix.poetry-version }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
       - name: Install dependencies
         run: poetry install --only dev
       - name: Format (chk) - black
@@ -49,11 +50,11 @@ jobs:
         poetry-version: [1.2.0]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: abatilo/actions-poetry@v2.0.0
+      - uses: actions/checkout@v3
+      - uses: abatilo/actions-poetry@v2
         with:
           poetry-version: ${{ matrix.poetry-version }}
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'poetry'
