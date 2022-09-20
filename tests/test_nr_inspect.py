@@ -78,5 +78,5 @@ def test_nornir_inspect_output(nr_result, expected_inspect_output, capsys):
 
     assert isinstance(captured_output, str)
     assert len(str(captured_output).splitlines()) == 49
-    # Replace performed to prevent of on line space being auto removed by VSCode.
+    # Add end of line characters to prevent VSCode auto-formatting line.
     assert captured_output.replace("diff = ", "diff = ''") == expected_inspect_output
