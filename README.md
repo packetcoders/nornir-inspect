@@ -3,7 +3,7 @@ Nornir inspect is a tool for inspecting the Nornir result structure.
 
 ## Install
 ```
-poetry addnornir-inspect
+poetry add nornir-inspect
 
 or
 
