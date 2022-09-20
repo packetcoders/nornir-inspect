@@ -26,7 +26,7 @@ pip install nornir-inspect
 <details>
   <summary>click here for Nornir setup steps</summary>
   
-```
+```python
 from nornir import InitNornir
 from nornir.core.task import Result, Task
 
@@ -54,7 +54,8 @@ result = nr.run(task=task_1, number=1)
 ```
 </details>
 
-```
+
+```python
 from nornir_inspect import nornir_inspect
 
 nornir_inspect(result)
