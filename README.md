@@ -3,7 +3,7 @@ Nornir inspect is a tool for inspecting the Nornir result structure.
 
 ## Install
 
-Via GitHub:
+### GitHub
 ```
 pip install git+ssh://git@github.com/packetcoders/nornir-inspect.git
 
@@ -12,7 +12,7 @@ or
 poetry add git+ssh://git@github.com/packetcoders/nornir-inspect.git
 ```
 
-Via pypi (TBD)
+### PyPi (TBD)
 ```
 poetry add nornir-inspect
 
