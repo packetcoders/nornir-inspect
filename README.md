@@ -1,5 +1,5 @@
 # Nornir Inspect
-Nornir inspect is a tool for inspecting the Nornir result structure.
+Nornir inspect is a Python library for inspecting the Nornir result structure.
 
 ## Install
 
