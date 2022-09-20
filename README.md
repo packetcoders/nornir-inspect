@@ -2,6 +2,17 @@
 Nornir inspect is a tool for inspecting the Nornir result structure.
 
 ## Install
+
+Via GitHub:
+```
+pip install git+ssh://git@github.com/packetcoders/nornir-inspect.git
+
+or 
+
+poetry add git+ssh://git@github.com/packetcoders/nornir-inspect.git
+```
+
+Via pypi (TBD)
 ```
 poetry add nornir-inspect
 
@@ -12,32 +23,38 @@ pip install nornir-inspect
 
 ## Usage
 
+<details>
+  <summary>click here for Nornir setup steps</summary>
+  
 ```
-## from nornir import InitNornir
-## from nornir.core.task import Result, Task
-##
-## nr = InitNornir(
-##     runner={
-##         "plugin": "threaded",
-##         "options": {
-##             "num_workers": 10,
-##         },
-##     },
-##     inventory={
-##         "plugin": "SimpleInventory",
-##         "options": {"host_file": "tests/hosts.yaml"},
-##     },
-##     logging={"enabled": False},
-## )
-##
-##
-## def task_1(task: Task, number: int) -> Result:
-##     n = number + 1
-##     return Result(host=task.host, result=f"{n}")
-##
-##
-## result = nr.run(task=task_1, number=1)
+from nornir import InitNornir
+from nornir.core.task import Result, Task
 
+nr = InitNornir(
+     runner={
+         "plugin": "threaded",
+         "options": {
+             "num_workers": 10,
+         },
+     },
+     inventory={
+         "plugin": "SimpleInventory",
+         "options": {"host_file": "tests/hosts.yaml"},
+     },
+     logging={"enabled": False},
+ )
+
+
+def task_1(task: Task, number: int) -> Result:
+     n = number + 1
+     return Result(host=task.host, result=f"{n}")
+
+
+result = nr.run(task=task_1, number=1)
+```
+</details>
+
+```
 from nornir_inspect import nornir_inspect
 
 nornir_inspect(result)
