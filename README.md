@@ -12,19 +12,19 @@ or
 poetry add git+ssh://git@github.com/packetcoders/nornir-inspect.git
 ```
 
-### PyPi (TBD)
+### Installation
 ```
-poetry add nornir-inspect
-
-or
-
 pip install nornir-inspect
+
+or 
+
+poetry add nornir-inspect
 ```
 
 ## Usage
 
 <details>
-  <summary>click here for Nornir setup steps</summary>
+  <summary>Nornir setup steps</summary>
   
 ```python
 from nornir import InitNornir
