@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "nornir-inspect"
-version = "0.1.0"
+version = "1.0.1"
 description = "Nornir inspection tool"
-authors = ["Rick Donato <admin@packetcoders.io>"]
+authors = ["Packet Coders <contact@packetcoders.io>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
