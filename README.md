@@ -24,7 +24,7 @@ pip install nornir-inspect
 ## Usage
 
 <details>
-  <summary>click here for Nornir setup steps</summary>
+  <summary>Nornir setup steps</summary>
   
 ```python
 from nornir import InitNornir
