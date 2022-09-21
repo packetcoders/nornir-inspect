@@ -12,13 +12,13 @@ or
 poetry add git+ssh://git@github.com/packetcoders/nornir-inspect.git
 ```
 
-### PyPi (TBD)
+### Installation
 ```
-poetry add nornir-inspect
-
-or
-
 pip install nornir-inspect
+
+or 
+
+poetry add nornir-inspect
 ```
 
 ## Usage
