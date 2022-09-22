@@ -11,9 +11,6 @@ or
 poetry add nornir-inspect
 ```
 
-### Installation
-
-
 ## Usage
 
 <details>
