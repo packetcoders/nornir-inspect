@@ -3,29 +3,22 @@ Nornir inspect is a Python library for inspecting the Nornir result structure.
 
 ## Install
 
-### GitHub
-```
-pip install git+ssh://git@github.com/packetcoders/nornir-inspect.git
-
-or 
-
-poetry add git+ssh://git@github.com/packetcoders/nornir-inspect.git
-```
-
-### Installation
 ```
 pip install nornir-inspect
 
-or 
+or
 
 poetry add nornir-inspect
 ```
+
+### Installation
+
 
 ## Usage
 
 <details>
   <summary>Nornir setup steps</summary>
-  
+
 ```python
 from nornir import InitNornir
 from nornir.core.task import Result, Task
