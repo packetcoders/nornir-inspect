@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir-inspect"
-version = "1.0.2"
+version = "1.0.3"
 description = "Nornir inspection tool"
 authors = ["Packet Coders <contact@packetcoders.io>"]
 readme = "README.md"
