@@ -3,7 +3,7 @@ name = "nornir-inspect"
 version = "1.0.3"
 description = "Nornir inspection tool"
 authors = [{ name = "Packet Coders", email = "contact@packetcoders.io" }]
-requires-python = "~=3.12"
+requires-python = "~=3.11"
 readme = "README.md"
 dependencies = [
     "rich>=14.0.0,<15",
