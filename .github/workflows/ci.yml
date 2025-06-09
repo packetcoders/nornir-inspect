@@ -28,7 +28,7 @@ jobs:
         uses: astral-sh/setup-uv@v5
       
       - name: Install dependencies from pyproject.toml
-        run: uv pip install -r <(uv pip compile pyproject.toml --extra dev) 
+        run: uv pip install -r <(uv pip compile pyproject.toml --extra dev) --system 
       
       - name: Format -  black
         run: black . --check
