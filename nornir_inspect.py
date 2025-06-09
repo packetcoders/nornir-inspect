@@ -2,7 +2,7 @@ import types
 from typing import Any, Union
 
 from nornir.core.task import AggregatedResult, MultiResult, Result
-from rich import print
+from rich import print as rprint
 from rich.highlighter import ReprHighlighter
 from rich.pretty import Pretty
 from rich.tree import Tree
@@ -108,4 +108,4 @@ def nornir_inspect(
       headings (bool): If True, the first line of the output will be a list of the headings. Defaults to
     True
     """
-    print(create_object_attribute_tree(nr_result, vals, headings))  # noqa: T001
+    rprint(create_object_attribute_tree(nr_result, vals, headings))  # noqa: T001
