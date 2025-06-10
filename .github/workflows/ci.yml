@@ -13,52 +13,68 @@ jobs:
     name: "code-quality"
     strategy:
        matrix:
-        python-version: [3.9]
-        poetry-version: [1.2.0]
+        python-version: ["3.11", "3.12"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Install poetry
-        run: pipx install poetry==${{ matrix.poetry-version }}
-      - uses: actions/setup-python@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
+      
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: poetry
-      - name: Install dependencies
-        run: poetry install --only dev
-      - name: Format (chk) - black
-        run: poetry run black . --check
-      - name: Format (chk) - isort
-        run: poetry run isort . --check-only --profile black
-      - name: Format (chk) - autoflake
-        run: poetry run autoflake -r . --expand-star-imports --remove-unused-variables --remove-all-unused-imports
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      
+      - name: Install dependencies 
+        run: uv pip install --system --group dev
+      
+      - name: Format -  black
+        run: black . --check
+
+      - name: Format - isort
+        run: isort . --check-only --profile black
+
+      - name: Format - autoflake
+        run: autoflake -r . --expand-star-imports --remove-unused-variables --remove-all-unused-imports
+  
       - name: Format (chk) - bandit
-        run: poetry run bandit -r . -c pyproject.toml
+        run: bandit -r . -c pyproject.toml
+      
       - name: Lint - flake8
-        run: poetry run flake8 .
+        run: flake8 .
+
       - name: Lint - pydocstyle
-        run: poetry run pydocstyle .
+        run: pydocstyle .
+
       - name: Lint - yamllint
-        run: poetry run yamllint .
+        run: yamllint .
+
       - name: Type check - mypy
-        run: poetry run mypy .
+        run: mypy .
+
   tests:
     name: "tests"
     needs: code-quality
     strategy:
       matrix:
-        python-version: [3.9]
-        poetry-version: [1.2.0]
+        python-version: ["3.11", "3.12"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Install poetry
-        run: pipx install poetry==${{ matrix.poetry-version }}
-      - uses: actions/setup-python@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: poetry
+
       - name: Install dependencies
-        run: poetry install --only dev
+        run: |
+          uv pip install pytest --system
+          uv pip install -e . --system
       - name: Test
-        run: poetry run pytest -vvv --tb=short
+        run: pytest tests -vvv --tb=short

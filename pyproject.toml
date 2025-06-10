@@ -1,84 +1,83 @@
-[tool.poetry]
+[project]
 name = "nornir-inspect"
 version = "1.0.3"
 description = "Nornir inspection tool"
-authors = ["Packet Coders <contact@packetcoders.io>"]
+authors = [{ name = "Packet Coders", email = "contact@packetcoders.io" }]
+requires-python = "~=3.11"
 readme = "README.md"
+dependencies = [
+    "rich>=14.0.0,<15",
+    "nornir>=3.5.0,<4",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-rich = "^12.5.1"
-nornir = "^3.3.0"
-
-[tool.poetry.group.dev.dependencies]
-nornir = "3.3.0"
-nornir-utils = "^0.2.0"
-attrs = "21.4.0"
-backcall = "0.2.0"
-bandit = "1.7.1"
-black = "21.9b0"
-certifi = "2021.10.8"
-charset-normalizer = "2.0.9"
-click = "8.0.3"
-colorama = "0.4.4"
-commonmark = "0.9.1"
-debugpy = "1.5.1"
-decorator = "5.1.0"
-entrypoints = "0.3"
-eradicate = "2.0.0"
-flake8 = "4.0.1"
-flake8-builtins = "1.5.3"
-flake8-print = "4.0.0"
-gitdb = "4.0.9"
-GitPython = "3.1.24"
-idna = "3.3"
-ipykernel = "6.6.0"
-ipython = "7.31.1"
-jedi = "0.18.1"
-jupyter-client = "7.1.0"
-jupyter-core = "4.9.1"
-matplotlib-inline = "0.1.3"
-mccabe = "0.6.1"
-mypy = "0.931"
-mypy-extensions = "0.4.3"
-nest-asyncio = "1.5.4"
-parso = "0.8.3"
-pathspec = "0.9.0"
-pbr = "5.8.0"
-pexpect = "4.8.0"
-pickleshare = "0.7.5"
-platformdirs = "2.4.0"
-prompt-toolkit = "3.0.23"
-ptyprocess = "0.7.0"
-pycodestyle = "2.8.0"
-pydocstyle = "6.1.1"
-pyflakes = "2.4.0"
-Pygments = "2.10.0"
-python-dateutil = "2.8.2"
-PyYAML = "6.0"
-pyzmq = "22.3.0"
-regex = "2021.10.8"
-requests = "2.26.0"
-six = "1.16.0"
-smmap = "5.0.0"
-snowballstemmer = "2.2.0"
-stevedore = "3.5.0"
-toml = "0.10.2"
-tomli = "1.2.1"
-traitlets = "5.1.1"
-urllib3 = "1.26.7"
-wcwidth = "0.2.5"
-yamllint = "1.26.3"
-isort = "^5.10.1"
-autoflake = "^1.4"
-pytest = "^7.1.3"
-rich = "^12.5.1"
-pytest-clarity = "^1.0.1"
-
+[dependency-groups]
+dev = [
+    "nornir==3.5.0",
+    "nornir-utils>=0.2.0,<0.3",
+    "attrs==25.3.0",
+    "autoflake==2.3.1",
+    "bandit==1.8.3",
+    "black==25.1.0",
+    "certifi==2025.4.26",
+    "charset-normalizer==3.4.2",
+    "click==8.1.8",
+    "colorama==0.4.6",
+    "commonmark==0.9.1",
+    "debugpy==1.8.14",
+    "decorator==5.2.1",
+    "entrypoints==0.4",
+    "eradicate==2.3.0",
+    "flake8==7.2.0",
+    "flake8-builtins==2.5.0",
+    "flake8-print==5.0.0",
+    "gitdb==4.0.12",
+    "GitPython==3.1.44",
+    "idna==3.10",
+    "ipykernel==6.29.5",
+    "ipython==9.2.0",
+    "jedi==0.19.2",
+    "jupyter-client==8.6.3",
+    "jupyter-core==5.7.2",
+    "matplotlib-inline==0.1.7",
+    "mccabe==0.7.0",
+    "mypy==1.15.0",
+    "mypy-extensions==1.1.0",
+    "nest-asyncio==1.6.0",
+    "parso==0.8.4",
+    "pathspec==0.12.1",
+    "pbr==6.1.1",
+    "pexpect==4.9.0",
+    "pickleshare==0.7.5",
+    "platformdirs==4.3.7",
+    "prompt-toolkit==3.0.51",
+    "ptyprocess==0.7.0",
+    "pycodestyle==2.13.0",
+    "pydocstyle==6.3.0",
+    "pyflakes==3.3.2",
+    "Pygments==2.19.1",
+    "python-dateutil==2.9.0.post0",
+    "PyYAML==6.0.2",
+    "pyzmq==26.4.0",
+    "regex==2024.11.6",
+    "requests==2.32.3",
+    "six==1.17.0",
+    "smmap==5.0.2",
+    "snowballstemmer==2.2.0",
+    "stevedore==5.4.1",
+    "toml==0.10.2",
+    "tomli==2.2.1",
+    "traitlets==5.14.3",
+    "urllib3==2.4.0",
+    "wcwidth==0.2.13",
+    "yamllint==1.37.1",
+    "isort==6.0.1",
+    "pytest==8.3.5",
+    "pytest-clarity>=1.0.1,<2",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.bandit]
 exclude_dirs = [".venv", "tests"]
@@ -97,7 +96,6 @@ match_dir = '^(?!(tests|.venv|virtualenvs)).*'
 inherit = false
 ignore = 'D400,D415,D203,D104,D213,D100,D205,D212,D407,D413,D406'
 match = '.*\.py'
-
 
 [tool.mypy]
 exclude = 'virtualenvs/'
