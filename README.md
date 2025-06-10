@@ -8,12 +8,7 @@ pip install nornir-inspect
 
 or
 
-poetry add nornir-inspect
-
-
-or 
-
-uv run pip install nornir-inspect
+uv add nornir-inspect
 ```
 
 ## Usage
