@@ -6,7 +6,9 @@ It formats nested `AggregatedResult`, `MultiResult`, and `Result` objects into a
 
 ```
 pip install nornir-inspect
+```
 or
+```
 uv add nornir-inspect
 ```
 
