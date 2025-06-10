@@ -5,41 +5,44 @@ help:
 	sort | \
 	awk -F ':.*?## ' 'NF==2 {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
+test:
+	uv run pytest tests -vv --tb=short -s
+
 ### Format (Check only) ###
 
 fmt-chk-black:
 	@echo "## black (check) ##"
-	@-black . --check
+	@-uv run black . --check
 	@echo
 
 fmt-chk-autoflake:
 	@echo "## autoflake (check) ##"
-	@-autoflake -r . --exclude venv --expand-star-imports --remove-unused-variables --remove-all-unused-imports
+	@-uv run autoflake -r . --exclude venv --expand-star-imports --remove-unused-variables --remove-all-unused-imports
 	@echo
 
 fmt-chk-isort:
 	@echo "## isort (check) ##"
-	@-isort . -c
+	@-uv run isort . -c
 	@echo
 
 fmt-chk: ## Format (check)
-fmt-chk:   fmt-chk-black fmt-chk-isort fmt-chk-autoflake
+fmt-chk:  fmt-chk-black fmt-chk-isort fmt-chk-autoflake
 
 ### Format ###
 
 fmt-black:
 	@echo "## black ##"
-	@-black .
+	@-uv run black .
 	@echo
 
 fmt-autoflake:
 	@echo "## autoflake ##"
-	@-autoflake -vri . --exclude venv --expand-star-imports --remove-unused-variables --remove-all-unused-imports
+	@-uv run autoflake -vri . --exclude venv --expand-star-imports --remove-unused-variables --remove-all-unused-imports
 	@echo
 
 fmt-isort:
 	@echo "## isort ##"
-	@-isort .
+	@-uv run isort .
 	@echo
 
 fmt: ## Format
@@ -49,27 +52,27 @@ fmt:  fmt-black fmt-isort fmt-autoflake
 
 lint-bandit:
 	@echo "## bandit ##"
-	@-bandit -r . -c "pyproject.toml"
+	@-uv run bandit -r . -c "pyproject.toml"
 	@echo
 
 lint-flake8:
 	@echo "## flake8 ##"
-	@-flake8 .
+	@-uv run flake8 .
 	@echo
 
 lint-pydoc:
 	@echo "## pydocstyle ##"
-	@-pydocstyle .
+	@-uv run pydocstyle .
 	@echo
 
 lint-yaml:
 	@echo "## yamllint ##"
-	@-yamllint .
+	@-uv run yamllint .
 	@echo ""
 
 lint-mypy:
 	@echo "## mypy ##"
-	@-mypy .
+	@-uv run mypy .
 	@echo ""
 
 lint: ## Lint
