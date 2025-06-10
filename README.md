@@ -1,13 +1,12 @@
 # Nornir Inspect
-Nornir inspect is a Python library for inspecting the Nornir result structure.
+**Nornir Inspect** is a lightweight Python library for visually inspecting the structure of Nornir task results.  
+It formats nested `AggregatedResult`, `MultiResult`, and `Result` objects into a readable tree layout.
 
 ## Install
 
 ```
 pip install nornir-inspect
-
 or
-
 uv add nornir-inspect
 ```
 
@@ -101,8 +100,11 @@ nornir_inspect(result)
         └── stdout = None
 ```
 
-### Addtional Options
-* `vals` (bool): If True, the values of the attributes will be printed. Defaults to True.
-* `headings`(bool): If True, the first line of the output will include the objects key name or list postion. Defaults to True.
+### Additional Options
 
+- `vals: bool` – If `True`, the values of the object's attributes will be printed.  
+  **Default:** `True`
+
+- `headings: bool` – If `True`, the first line of the output will include the object's key name or list position.  
+  **Default:** `True`
 
