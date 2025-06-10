@@ -6,7 +6,7 @@ authors = [{ name = "Packet Coders", email = "contact@packetcoders.io" }]
 requires-python = "~=3.11"
 readme = "README.md"
 dependencies = [
-    "rich==14.0.0",
+    "rich>=12, <15",
     "nornir>=3.5.0,<4",
 ]
 
