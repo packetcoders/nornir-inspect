@@ -582,7 +582,7 @@ wheels = [
 
 [[package]]
 name = "nornir-inspect"
-version = "1.0.3"
+version = "1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "nornir" },
@@ -657,7 +657,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "nornir", specifier = ">=3.5.0,<4" },
-    { name = "rich", specifier = "==14.0.0" },
+    { name = "rich", specifier = ">=12,<15" },
 ]
 
 [package.metadata.requires-dev]
